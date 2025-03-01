@@ -58,9 +58,26 @@ struct Node* removeElements(struct Node* head, int value) {
     return newHead;
 }
 
-struct ListNode* reverseList(struct Node* head)
+struct Node* reverseElements(struct Node* head)
 {
+    struct Node* pre = NULL;
+    struct Node* curr = head;
+    struct Node* next = NULL;
     
+    while (curr != NULL)
+    {
+        Node* next = curr->next;
+        
+        curr->next = pre;
+        
+        pre = curr;
+        
+        curr = next;
+        
+        
+    }
+    
+    return pre;
 }
 
 
@@ -108,8 +125,14 @@ int main()
     printf("New List: ");
     printList(head);
     
+    head = reverseElements(head);
+    
+    printf("List Reversed: ");
+    printList(head);
+    
     deallocate(&head);
-
+    
 
     return 0;
 }
+
